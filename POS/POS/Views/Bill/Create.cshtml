@@ -1,0 +1,40 @@
+﻿@model POS.Models.Bill
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index","Bill")">Product</a></li>
+    <li class="breadcrumb-item active">Create</li>
+</ol>
+<hr />
+
+@using (Html.BeginForm("Create", "Bill", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationMessage("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TableNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TableNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TableNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a href="@Url.Action("Index", "Bill")" class="btn btn-info btn-shadow">
+                    Back to List
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                </a>
+                <button type="submit" value="Create" class="btn btn-success btn-shadow">
+                    <i class="fa fa-save"></i> Save
+                </button>
+            </div>
+        </div>
+    </div>
+}
